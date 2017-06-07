@@ -1,3 +1,8 @@
+// import Vue from 'vue'
+// import Router from 'vue-router'
+
+// Vue.use(Router)
+
 export default {
   name: 'login',
   data () {
@@ -19,9 +24,13 @@ export default {
       var authUser = {}
       this.$http.post(loginUrl, postData)
         .then(response => {
-            authUser= response.data.token
+            authUser = response.data.token
             window.localStorage.setItem('authUser', JSON.stringify(authUser))
             window.localStorage.setItem('userName', this.user.email)
+
+            // var router = new Router();
+            // router.go('/');
+            this.$router.push('dashboard');
         }, response => {
           alert(response.statusText)
         })

@@ -9,23 +9,23 @@ export default new Router({
   routes: [
     {
       path: '/login',
-      query: { redirect: '/' },
+      // query: { redirect: '/' },
       name: 'login',
       component: login
     },
     {
-      path: '/',
+      path: '/dashboard',
       name: 'dashboard',
       component: dashboard
     }
   ]
 })
 
-// router.beforeEach(function (transition) {
-//     if (transition.to.auth && !Auth.authenticated) {
+// router.beforeEach(function () {
+//     if (/*transition.to.auth && */!window.localStorage.getItem('authUser')) {
 //         // if route requires auth and user isn't authenticated
-//         transition.redirect('/login')
+//         this.$router.push('login');
 //     } else {
-//         transition.next()
+//         Vue.http.headers.common['Authorization'] = "Bearer window.localStorage.getItem('authUser')";
 //     }
 // })
